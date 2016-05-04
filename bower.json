@@ -1,0 +1,25 @@
+{
+  "name": "trapjs2",
+  "description": "Function library for easy use.",
+  "main": "dist/trap.js",
+  "authors": [
+    {
+      "name": "Gluons",
+      "email": "sarunta@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "trapjs",
+    "function",
+    "library"
+  ],
+  "homepage": "https://github.com/gluons/trapjs2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
