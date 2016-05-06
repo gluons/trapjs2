@@ -1,5 +1,9 @@
 {
-	"presets": ["es2015"],
+	"presets": ["es2015-script"],
+	"plugins": [
+		"transform-minify-booleans",
+		"transform-property-literals"
+	],
 	"compact": true,
 	"comments": false
 }

@@ -68,7 +68,7 @@
 		}
 	};
 	/*
-	 * Extending methods
+	 * Extended methods
 	 */
 	Date.prototype.dateEquals = function (targetDate) {
 		let sourceDate = this;
@@ -110,6 +110,9 @@
 	 * Global functions
 	 */
 	trap.global = {
+		log: (...text) => {
+			console.log(...text);
+		},
 		today: () => {
 			return new Date();
 		},
@@ -136,20 +139,14 @@
 	};
 
 	/*
-	 * Browser functions.
+	 * Browser functions
 	 */
 	trap.browser = {
-		log: (text) => {
-			console.log(text);
-		},
 		echo: (text) => {
 			document.write(text);
 		},
 		notify: (text) => {
 			alert(text);
-		},
-		say: function () {
-			return this.notify;
 		},
 		getParameter: (name) => {
 			let searchString = window.location.search.substring(1);
@@ -176,10 +173,18 @@
 					c = c.substring(1);
 				}
 				if (c.indexOf(name) == 0) {
-					return c.substring(name.length, c.length);
+					let value = c.substring(name.length, c.length);
+					if (!isNaN(value)) {
+						return parseFloat(value);
+					} else {
+						return value;
+					}
 				}
 			}
 			return '';
+		},
+		delCookie: (cname) => {
+			document.cookie = cname + '=; expires=' + (new Date(0)).toUTCString();
 		},
 		loadDoc: (url, elementId) => {
 			let xhttp = new XMLHttpRequest();
@@ -192,5 +197,6 @@
 			xhttp.send();
 		}
 	};
+	trap.browser.say = trap.browser.notify;
 	return trap;
 }));
