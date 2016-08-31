@@ -1,10 +1,10 @@
 {
   "name": "trapjs2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Function library for easy use.",
   "main": "src/trap.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "rollup -c",
     "test": "mocha --harmony test/node.js && karma start --single-run"
   },
   "repository": {
@@ -28,26 +28,27 @@
   "bugs": {
     "url": "https://github.com/gluons/trapjs2/issues"
   },
-  "homepage": "https://github.com/gluons/trapjs2#readme",
+  "homepage": "https://github.com/gluons/trapjs2",
   "dependencies": {},
   "devDependencies": {
-    "babel-plugin-transform-merge-sibling-variables": "^6.8.0",
     "babel-plugin-transform-minify-booleans": "^6.8.0",
     "babel-plugin-transform-property-literals": "^6.8.0",
-    "babel-preset-es2015-script": "^1.0.0",
-    "chai": "^3.5.0",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "chai": "*",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-plumber": "^1.1.0",
     "gulp-watch": "^4.3.5",
-    "karma": "^0.13.22",
+    "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-mocha": "^1.0.1",
     "karma-mocha-reporter": "^2.0.2",
     "karma-requirejs": "^1.0.0",
-    "mocha": "^2.4.5",
-    "requirejs": "^2.2.0"
+    "mocha": "*",
+    "requirejs": "^2.2.0",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-json": "^2.0.1"
   }
 }

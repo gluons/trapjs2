@@ -1,6 +1,7 @@
 {
 	"parserOptions": {
-		"ecmaVersion": 6
+		"ecmaVersion": 6,
+		"sourceType": "module"
 	},
 	"rules": {
 		"indent": [
@@ -25,9 +26,6 @@
 		],
 		"no-redeclare": [
 			"warn"
-		],
-		"space-before-function-paren": [
-			"error"
 		],
 		"space-infix-ops": [
 			"error",
