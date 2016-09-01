@@ -4,7 +4,8 @@
   "description": "Function library for easy use.",
   "main": "src/trap.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "node scripts/build.js",
+    "build-cli": "rollup -c",
     "test": "mocha --harmony test/node.js && karma start --single-run"
   },
   "repository": {
@@ -35,11 +36,8 @@
     "babel-plugin-transform-property-literals": "^6.8.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "chai": "*",
+    "chokidar": "^1.6.0",
     "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-plumber": "^1.1.0",
-    "gulp-watch": "^4.3.5",
     "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^1.0.0",
@@ -48,6 +46,7 @@
     "karma-requirejs": "^1.0.0",
     "mocha": "*",
     "requirejs": "^2.2.0",
+    "rollup": "^0.34.12",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-json": "^2.0.1"
   }
