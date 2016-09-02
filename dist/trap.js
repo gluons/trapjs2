@@ -168,7 +168,7 @@
 				}
 			}
 		};
-		Trap.float = function () {
+		Trap.distribute = function () {
 			for (var _methodName4 in global$1) {
 				if (global$1.hasOwnProperty(_methodName4)) {
 					window[_methodName4] = global$1[_methodName4];

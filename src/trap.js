@@ -34,7 +34,7 @@ if (!(typeof module === 'object' && module.exports)) {
 			}
 		}
 	};
-	Trap.float = () => {
+	Trap.distribute = () => {
 		for (let methodName in global) {
 			if (global.hasOwnProperty(methodName)) {
 				window[methodName] = global[methodName];
