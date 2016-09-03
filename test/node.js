@@ -1,7 +1,7 @@
 'use strict';
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
-var trap = require('../src/trap');
+const trap = require('../src/trap');
 
 describe('Trap', () => {
 	describe('Extended methods', () => {

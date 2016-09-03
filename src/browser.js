@@ -1,6 +1,7 @@
 'use strict';
 
 const browser = {
+	q: document.querySelectorAll.bind(document),
 	echo: (text) => {
 		document.write(text);
 	},
@@ -61,4 +62,4 @@ const browser = {
 };
 Object.freeze(browser);
 
-export default browser;
+module.exports = browser;

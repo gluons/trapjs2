@@ -1,14 +1,15 @@
 'use strict';
 
-import { version } from '../package.json';
+const version = require('../package.json').version;
 
-import './native.js';
-import global from './global.js';
-import browser from './browser.js';
+require('./native');
+const global = require('./global');
 
 const Trap = {
 	version: version
 };
+
+const isOnBrowser = () => typeof window !== 'undefined';
 
 for (let methodName in global) {
 	if (global.hasOwnProperty(methodName)) {
@@ -16,7 +17,8 @@ for (let methodName in global) {
 	}
 }
 
-if (!(typeof module === 'object' && module.exports)) {
+if (isOnBrowser()) {
+	const browser = require('./browser');
 	for (let methodName in browser) {
 		if (browser.hasOwnProperty(methodName)) {
 			Trap[methodName] = browser[methodName];
@@ -49,4 +51,4 @@ if (!(typeof module === 'object' && module.exports)) {
 }
 Object.freeze(Trap);
 
-export default Trap;
+module.exports = Trap;

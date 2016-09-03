@@ -4,8 +4,8 @@
   "description": "Function library for easy use.",
   "main": "src/trap.js",
   "scripts": {
-    "build": "node scripts/build.js",
-    "build-cli": "rollup -c",
+    "build": "webpack",
+    "watch": "webpack --watch",
     "test": "mocha --harmony test/node.js && karma start --single-run"
   },
   "repository": {
@@ -32,12 +32,11 @@
   "homepage": "https://github.com/gluons/trapjs2",
   "dependencies": {},
   "devDependencies": {
-    "babel-plugin-transform-minify-booleans": "^6.8.0",
-    "babel-plugin-transform-property-literals": "^6.8.0",
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babili-webpack-plugin": "0.0.2",
     "chai": "*",
     "chokidar": "^1.6.0",
     "del": "^2.2.0",
+    "json-loader": "^0.5.4",
     "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^1.0.0",
@@ -46,8 +45,6 @@
     "karma-requirejs": "^1.0.0",
     "mocha": "*",
     "requirejs": "^2.2.0",
-    "rollup": "^0.34.12",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-json": "^2.0.1"
+    "webpack": "^1.13.2"
   }
 }

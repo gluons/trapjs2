@@ -30,4 +30,4 @@ const global = {
 };
 Object.freeze(global);
 
-export default global;
+module.exports = global;

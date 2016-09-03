@@ -8,6 +8,7 @@ Date.prototype.dateEquals = function (targetDate) {
 		return false;
 	}
 };
+
 String.prototype.unicodeCharAt = function (index) {
 	// Support non-BMP characters. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt#Fixing_charAt()_to_support_non-Basic-Multilingual-Plane_(BMP)_characters
 	let str = this;
