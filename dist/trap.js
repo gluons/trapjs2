@@ -120,8 +120,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		"description": "Function library for easy use.",
 		"main": "src/trap.js",
 		"scripts": {
-			"build": "webpack",
-			"watch": "webpack --watch",
+			"build": "gulp build",
+			"watch": "gulp watch",
 			"test": "mocha --harmony test/node.js && karma start --single-run"
 		},
 		"repository": {
@@ -151,9 +151,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			"babili-webpack-plugin": "0.0.2",
 			"chai": "*",
 			"chokidar": "^1.6.0",
+			"clone": "^1.0.2",
 			"del": "^2.2.0",
 			"gulp": "^3.9.1",
-			"gulp-plumber": "^1.1.0",
 			"json-loader": "^0.5.4",
 			"karma": "^1.2.0",
 			"karma-chai": "^0.1.0",
@@ -163,7 +163,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			"karma-requirejs": "^1.0.0",
 			"mocha": "*",
 			"requirejs": "^2.2.0",
-			"uglify-js": "^2.7.3",
 			"webpack": "^1.13.2"
 		}
 	};

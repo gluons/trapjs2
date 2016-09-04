@@ -1,14 +1,14 @@
 require.config({
-	baseUrl: '/base',
+	baseUrl: '/base/dist',
 	paths: {
-		'trap': 'dist/trap'
+		'trap': 'trap',
+		'browser-test': '../test/browser'
 	},
 	shim: {
-		'test/browser': {
-			deps: ['trap'],
-			exports: 'Trap'
+		'browser-test': {
+			deps: ['trap']
 		}
 	},
-	deps: ['trap', 'test/browser'],
+	deps: ['trap', 'browser-test'],
 	callback: window.__karma__.start
 });

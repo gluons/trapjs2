@@ -1,10 +1,8 @@
-const BabiliPlugin = require("babili-webpack-plugin");
-
 module.exports = {
 	entry: './src/trap.js',
 	output: {
 		path: './dist',
-		filename: 'trap.min.js',
+		filename: 'trap.js',
 		library: 'Trap',
 		libraryTarget: 'umd',
 		umdNamedDefine: true
@@ -16,10 +14,5 @@ module.exports = {
 				loader: 'json'
 			}
 		]
-	},
-	plugins: [
-		new BabiliPlugin({
-			test: /\.js$/
-		})
-	]
+	}
 };

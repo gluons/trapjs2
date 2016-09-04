@@ -1,6 +1,6 @@
 /* globals expect */
 'use strict';
-define(['trap'], (trap) => {
+define(['Trap'], (trap) => {
 	describe('Trap', () => {
 		describe('Browser functions', () => {
 			describe('Cookie', () => {
