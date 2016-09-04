@@ -1,6 +1,6 @@
 {
   "name": "trapjs2",
-  "description": "Function library for easy use.",
+  "description": "Functional JavaScript library for easy use.",
   "main": "dist/trap.js",
   "authors": [
     {

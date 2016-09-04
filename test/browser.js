@@ -13,6 +13,15 @@ define(['Trap'], (trap) => {
 					expect(trap.getCookie('test')).to.equal(5);
 				});
 			});
+			describe('Query Selector', () => {
+				it('should return correct DOM nodes from q()', () => {
+					let nodes = document.querySelectorAll('body');
+					let qNodes = trap.q('body');
+					expect(qNodes).to.have.lengthOf(nodes.length);
+					expect(qNodes.length).to.be.above(0);
+					expect(qNodes[0]).to.eql(nodes[0]);
+				});
+			});
 		});
 	});
 });

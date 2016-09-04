@@ -1,7 +1,7 @@
 {
   "name": "trapjs2",
   "version": "1.0.1",
-  "description": "Function library for easy use.",
+  "description": "Functional JavaScript library for easy use.",
   "main": "src/trap.js",
   "scripts": {
     "build": "gulp build",
