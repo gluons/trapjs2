@@ -56,13 +56,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	const version = __webpack_require__(1).version;
-
-	__webpack_require__(2);
-	const global = __webpack_require__(3);
+	__webpack_require__(1);
+	const global = __webpack_require__(2);
 
 	const Trap = {
-		version: version
+		version:  true ? ("1.0.1") : require('../package.json').version
 	};
 
 	const isOnBrowser = () => typeof window !== 'undefined';
@@ -74,7 +72,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	if (isOnBrowser()) {
-		const browser = __webpack_require__(4);
+		const browser = __webpack_require__(3);
 		for (let methodName in browser) {
 			if (browser.hasOwnProperty(methodName)) {
 				Trap[methodName] = browser[methodName];
@@ -112,63 +110,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	module.exports = {
-		"name": "trapjs2",
-		"version": "1.0.1",
-		"description": "Function library for easy use.",
-		"main": "src/trap.js",
-		"scripts": {
-			"build": "gulp build",
-			"watch": "gulp watch",
-			"test": "mocha --harmony test/node.js && karma start --single-run"
-		},
-		"repository": {
-			"type": "git",
-			"url": "git+https://github.com/gluons/trapjs2.git"
-		},
-		"keywords": [
-			"trap",
-			"js",
-			"trapjs",
-			"trapjs2",
-			"function",
-			"functions",
-			"library"
-		],
-		"author": {
-			"name": "Gluons",
-			"email": "sarunta@gmail.com"
-		},
-		"license": "MIT",
-		"bugs": {
-			"url": "https://github.com/gluons/trapjs2/issues"
-		},
-		"homepage": "https://github.com/gluons/trapjs2",
-		"dependencies": {},
-		"devDependencies": {
-			"babili-webpack-plugin": "0.0.2",
-			"chai": "*",
-			"chokidar": "^1.6.0",
-			"clone": "^1.0.2",
-			"del": "^2.2.0",
-			"gulp": "^3.9.1",
-			"json-loader": "^0.5.4",
-			"karma": "^1.2.0",
-			"karma-chai": "^0.1.0",
-			"karma-firefox-launcher": "^1.0.0",
-			"karma-mocha": "^1.0.1",
-			"karma-mocha-reporter": "^2.0.2",
-			"karma-requirejs": "^1.0.0",
-			"mocha": "*",
-			"requirejs": "^2.2.0",
-			"webpack": "^1.13.2"
-		}
-	};
-
-/***/ },
-/* 2 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -212,7 +153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -251,7 +192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	'use strict';

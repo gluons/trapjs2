@@ -12,13 +12,13 @@ gulp.task('clean', () => {
 gulp.task('build', ['clean'], () => {
 	return Promise.all([
 		build(require('./webpack.config')),
-		build(require('./webpack.config.prd'))
+		build(require('./webpack.prod.config'))
 	]);
 });
 
 gulp.task('watch', ['build'], () => {
 	watch(require('./webpack.config'));
-	watch(require('./webpack.config.prd'));
+	watch(require('./webpack.prod.config'));
 });
 
 gulp.task('default', ['watch']);

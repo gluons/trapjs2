@@ -1,12 +1,10 @@
 'use strict';
 
-const version = require('../package.json').version;
-
 require('./native');
 const global = require('./global');
 
 const Trap = {
-	version: version
+	version: typeof VERSION !== 'undefined' ? VERSION : require('../package.json').version
 };
 
 const isOnBrowser = () => typeof window !== 'undefined';

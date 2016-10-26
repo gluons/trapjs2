@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
 	entry: './src/trap.js',
 	output: {
@@ -14,5 +16,10 @@ module.exports = {
 				loader: 'json'
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+			VERSION: JSON.stringify(require('./package.json').version)
+		})
+	]
 };
