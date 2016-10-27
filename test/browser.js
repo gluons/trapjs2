@@ -8,7 +8,7 @@ define(['Trap'], (trap) => {
 					expect(trap.getCookie).to.exist;
 					expect(trap.setCookie).to.exist;
 					trap.delCookie('test');
-					expect(trap.getCookie('test')).to.be.empty;
+					expect(trap.getCookie('test')).to.not.be.ok;
 					trap.setCookie('test', 5, 1);
 					expect(trap.getCookie('test')).to.equal(5);
 				});

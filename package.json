@@ -32,10 +32,10 @@
   "homepage": "https://github.com/gluons/trapjs2",
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-preset-babili": "^0.0.5",
     "babili-webpack-plugin": "^0.0.6",
     "chai": "*",
-    "chokidar": "^1.6.0",
-    "clone": "^2.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "json-loader": "^0.5.4",

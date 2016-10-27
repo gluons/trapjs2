@@ -54,16 +54,64 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(global) {/* global VERSION */
 	'use strict';
 
-	__webpack_require__(1);
-	const global = __webpack_require__(2);
+	const Trap = __webpack_require__(1);
+	const browser = __webpack_require__(4);
 
-	const Trap = {
-		version:  true ? ("1.0.1") : require('../package.json').version
+	Trap.version = ("1.0.2");
+
+	for (let methodName in global) {
+		if (global.hasOwnProperty(methodName)) {
+			Trap[methodName] = global[methodName];
+		}
+	}
+	for (let methodName in browser) {
+		if (browser.hasOwnProperty(methodName)) {
+			Trap[methodName] = browser[methodName];
+		}
+	}
+
+	Trap.noConflict = () => {
+		for (let methodName in global) {
+			if (global.hasOwnProperty(methodName)) {
+				delete window[methodName];
+			}
+		}
+		for (let methodName in browser) {
+			if (browser.hasOwnProperty(methodName)) {
+				delete window[methodName];
+			}
+		}
+	};
+	Trap.distribute = () => {
+		for (let methodName in global) {
+			if (global.hasOwnProperty(methodName)) {
+				window[methodName] = global[methodName];
+			}
+		}
+		for (let methodName in browser) {
+			if (browser.hasOwnProperty(methodName)) {
+				window[methodName] = browser[methodName];
+			}
+		}
 	};
 
-	const isOnBrowser = () => typeof window !== 'undefined';
+	module.exports = Trap;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(2);
+	const global = __webpack_require__(3);
+
+	const Trap = {};
 
 	for (let methodName in global) {
 		if (global.hasOwnProperty(methodName)) {
@@ -71,48 +119,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	}
 
-	if (isOnBrowser()) {
-		const browser = __webpack_require__(3);
-		for (let methodName in browser) {
-			if (browser.hasOwnProperty(methodName)) {
-				Trap[methodName] = browser[methodName];
-			}
-		}
-		Trap.noConflict = () => {
-			for (let methodName in global) {
-				if (global.hasOwnProperty(methodName)) {
-					delete window[methodName];
-				}
-			}
-			for (let methodName in browser) {
-				if (browser.hasOwnProperty(methodName)) {
-					delete window[methodName];
-				}
-			}
-		};
-		Trap.distribute = () => {
-			for (let methodName in global) {
-				if (global.hasOwnProperty(methodName)) {
-					window[methodName] = global[methodName];
-				}
-			}
-			for (let methodName in browser) {
-				if (browser.hasOwnProperty(methodName)) {
-					window[methodName] = browser[methodName];
-				}
-			}
-		};
-	}
-	Object.freeze(Trap);
-
 	module.exports = Trap;
 
 
 /***/ },
-/* 1 */
+/* 2 */
 /***/ function(module, exports) {
 
 	'use strict';
+
+	Date.today = function () {
+		let now = new Date();
+		return new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate()
+		);
+	};
 
 	Date.prototype.dateEquals = function (targetDate) {
 		let sourceDate = this;
@@ -126,7 +149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	String.prototype.unicodeCharAt = function (index) {
 		// Support non-BMP characters. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt#Fixing_charAt()_to_support_non-Basic-Multilingual-Plane_(BMP)_characters
 		let str = this;
-		let ret = '';
+		let result = '';
 		let end = str.length;
 
 		let surrogatePairs = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
@@ -143,52 +166,22 @@ return /******/ (function(modules) { // webpackBootstrap
 			return '';
 		}
 
-		ret += str.charAt(index);
+		result += str.charAt(index);
 
-		if (/[\uD800-\uDBFF]/.test(ret) && /[\uDC00-\uDFFF]/.test(str.charAt(index + 1))) {
-			ret += str.charAt(index + 1);
+		if (/[\uD800-\uDBFF]/.test(result) && /[\uDC00-\uDFFF]/.test(str.charAt(index + 1))) {
+			result += str.charAt(index + 1);
 		}
-		return ret;
+		return result;
 	};
 
-
-/***/ },
-/* 2 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	const global = {
-		log: (...text) => {
-			console.log(...text);
-		},
-		today: () => {
-			return new Date();
-		},
-		repeatUntil: (conditionFunc, exec) => {
-			while (!conditionFunc()) {
-				exec();
-			}
-		},
-		repeat: (numTimes, exec) => {
-			for (let i = 0; i < numTimes; i++) {
-				exec();
-			}
-		},
-		sqrt: (number) => {
-			return Math.sqrt(number);
-		},
-		reverse: (str) => {
-			let ret = '';
-			for (let i = str.length - 1; i >= 0; i--) {
-				ret += str.unicodeCharAt(i);
-			}
-			return ret;
+	String.prototype.reverse = function () {
+		let str = this;
+		let result = '';
+		for (let i = str.length - 1; i >= 0; i--) {
+			result += str.unicodeCharAt(i);
 		}
+		return result;
 	};
-	Object.freeze(global);
-
-	module.exports = global;
 
 
 /***/ },
@@ -197,18 +190,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	const global = {
+		log(...text) {
+			console.log(...text);
+		},
+		now() {
+			return new Date();
+		},
+		today() {
+			return Date.today();
+		},
+		repeat(numTimes, exec) {
+			if (typeof exec === 'function') {
+				for (let i = 0; i < numTimes; i++) {
+					exec();
+				}
+			}
+		},
+		sqrt(number) {
+			return Math.sqrt(number);
+		}
+	};
+
+	module.exports = global;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	'use strict';
+
 	const browser = {
 		q: document.querySelectorAll.bind(document),
-		echo: (text) => {
+		echo(text) {
 			document.write(text);
 		},
-		notify: (text) => {
-			alert(text);
-		},
-		get say() {
-			return this.notify;
-		},
-		getParameter: (name) => {
+		getParameter(name) {
 			let searchString = window.location.search.substring(1);
 			let params = searchString.split('&');
 			for (let i in params) {
@@ -218,13 +236,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			}
 		},
-		setCookie: (cname, cvalue, exdays) => {
+		setCookie(cname, cvalue, exdays) {
 			let d = new Date();
 			d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 			let expires = 'expires=' + d.toUTCString();
 			document.cookie = cname + '=' + cvalue + '; ' + expires;
 		},
-		getCookie: (cname) => {
+		getCookie(cname) {
 			let name = cname + '=';
 			let ca = document.cookie.split(';');
 			for (let i = 0; i < ca.length; i++) {
@@ -241,23 +259,22 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 				}
 			}
-			return '';
+			return null;
 		},
-		delCookie: (cname) => {
+		delCookie(cname) {
 			document.cookie = cname + '=; expires=' + (new Date(0)).toUTCString();
 		},
-		loadDoc: (url, elementId) => {
-			let xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = () => {
-				if (xhttp.readyState == 4 && xhttp.status == 200) {
-					document.getElementById(elementId).innerHTML = xhttp.responseText;
+		loadDoc(url, elementId) {
+			let xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					document.getElementById(elementId).innerHTML = xhr.responseText;
 				}
 			};
-			xhttp.open('GET', url, true);
-			xhttp.send();
+			xhr.open('GET', url, true);
+			xhr.send();
 		}
 	};
-	Object.freeze(browser);
 
 	module.exports = browser;
 

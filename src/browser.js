@@ -2,16 +2,10 @@
 
 const browser = {
 	q: document.querySelectorAll.bind(document),
-	echo: (text) => {
+	echo(text) {
 		document.write(text);
 	},
-	notify: (text) => {
-		alert(text);
-	},
-	get say() {
-		return this.notify;
-	},
-	getParameter: (name) => {
+	getParameter(name) {
 		let searchString = window.location.search.substring(1);
 		let params = searchString.split('&');
 		for (let i in params) {
@@ -21,13 +15,13 @@ const browser = {
 			}
 		}
 	},
-	setCookie: (cname, cvalue, exdays) => {
+	setCookie(cname, cvalue, exdays) {
 		let d = new Date();
 		d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 		let expires = 'expires=' + d.toUTCString();
 		document.cookie = cname + '=' + cvalue + '; ' + expires;
 	},
-	getCookie: (cname) => {
+	getCookie(cname) {
 		let name = cname + '=';
 		let ca = document.cookie.split(';');
 		for (let i = 0; i < ca.length; i++) {
@@ -44,22 +38,21 @@ const browser = {
 				}
 			}
 		}
-		return '';
+		return null;
 	},
-	delCookie: (cname) => {
+	delCookie(cname) {
 		document.cookie = cname + '=; expires=' + (new Date(0)).toUTCString();
 	},
-	loadDoc: (url, elementId) => {
-		let xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = () => {
-			if (xhttp.readyState == 4 && xhttp.status == 200) {
-				document.getElementById(elementId).innerHTML = xhttp.responseText;
+	loadDoc(url, elementId) {
+		let xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+				document.getElementById(elementId).innerHTML = xhr.responseText;
 			}
 		};
-		xhttp.open('GET', url, true);
-		xhttp.send();
+		xhr.open('GET', url, true);
+		xhr.send();
 	}
 };
-Object.freeze(browser);
 
 module.exports = browser;

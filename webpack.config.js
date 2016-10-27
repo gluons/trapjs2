@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-	entry: './src/trap.js',
+	entry: './src/trap.browser.js',
 	output: {
 		path: './dist',
 		filename: 'trap.js',

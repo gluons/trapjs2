@@ -1,33 +1,25 @@
 'use strict';
 
 const global = {
-	log: (...text) => {
+	log(...text) {
 		console.log(...text);
 	},
-	today: () => {
+	now() {
 		return new Date();
 	},
-	repeatUntil: (conditionFunc, exec) => {
-		while (!conditionFunc()) {
-			exec();
+	today() {
+		return Date.today();
+	},
+	repeat(numTimes, exec) {
+		if (typeof exec === 'function') {
+			for (let i = 0; i < numTimes; i++) {
+				exec();
+			}
 		}
 	},
-	repeat: (numTimes, exec) => {
-		for (let i = 0; i < numTimes; i++) {
-			exec();
-		}
-	},
-	sqrt: (number) => {
+	sqrt(number) {
 		return Math.sqrt(number);
-	},
-	reverse: (str) => {
-		let ret = '';
-		for (let i = str.length - 1; i >= 0; i--) {
-			ret += str.unicodeCharAt(i);
-		}
-		return ret;
 	}
 };
-Object.freeze(global);
 
 module.exports = global;
