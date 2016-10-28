@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const BabiliPlugin = require("babili-webpack-plugin");
 
 module.exports = {
 	entry: './src/trap.browser.js',
@@ -13,8 +12,9 @@ module.exports = {
 	module: {
 		loaders: [
 			{
-				test: /\.json$/,
-				loader: 'json'
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: 'babel'
 			}
 		]
 	},
@@ -22,10 +22,10 @@ module.exports = {
 		new webpack.DefinePlugin({
 			VERSION: JSON.stringify(require('./package.json').version)
 		}),
-		new BabiliPlugin({
-			test: /\.js$/,
-			babel: require('babel-core'),
-			babili: require('babel-preset-babili')
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
 		})
 	]
 };

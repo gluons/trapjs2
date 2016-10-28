@@ -1,7 +1,7 @@
 require.config({
 	baseUrl: '/base/dist',
 	paths: {
-		'trap': 'trap',
+		'trap': 'trap.min',
 		'browser-test': '../test/browser'
 	},
 	shim: {
