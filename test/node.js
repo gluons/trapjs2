@@ -41,6 +41,13 @@ describe('Trap', () => {
 				expect(numbers.reverse()).to.equal('𝟡𝟠𝟟𝟞𝟝𝟜𝟛𝟚𝟙𝟘');
 			});
 		});
+		describe('String.prototype.contains()', () => {
+			it('should return occurrence result of substring in string', () => {
+				let str = 'The quick brown fox jumps over the lazy dog.';
+				expect(str.contains('brown fox')).to.be.true;
+				expect(str.contains('yellow dog')).to.be.false;
+			});
+		});
 	});
 	describe('Global functions', () => {
 		describe('today()', () => {

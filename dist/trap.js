@@ -177,6 +177,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		return result;
 	};
 
+	String.prototype.contains = function (searchValue) {
+		return !!~this.indexOf(searchValue);
+	};
+
 /***/ },
 /* 3 */
 /***/ function(module, exports) {
