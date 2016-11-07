@@ -38,6 +38,7 @@
     "chai": "*",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
     "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^1.0.0",
