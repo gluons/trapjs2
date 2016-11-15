@@ -15,6 +15,7 @@ describe('Trap', () => {
 				expect(today.getHours()).to.equal(0);
 				expect(today.getMinutes()).to.equal(0);
 				expect(today.getSeconds()).to.equal(0);
+				expect(today.getMilliseconds()).to.equal(0);
 			});
 		});
 		describe('Date.prototype.dateEquals()', () => {

@@ -2,11 +2,8 @@
 
 Date.today = function () {
 	let now = new Date();
-	return new Date(
-		now.getFullYear(),
-		now.getMonth(),
-		now.getDate()
-	);
+	now.setHours(0, 0, 0, 0);
+	return now;
 };
 
 Date.prototype.dateEquals = function (targetDate) {

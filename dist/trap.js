@@ -128,7 +128,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	Date.today = function () {
 		var now = new Date();
-		return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		now.setHours(0, 0, 0, 0);
+		return now;
 	};
 
 	Date.prototype.dateEquals = function (targetDate) {
@@ -199,15 +200,21 @@ return /******/ (function(modules) { // webpackBootstrap
 		today: function today() {
 			return Date.today();
 		},
-		repeat: function repeat(numTimes, exec) {
+		repeat: function repeat(n, exec) {
 			if (typeof exec === 'function') {
-				for (var i = 0; i < numTimes; i++) {
+				for (var i = 0; i < n; i++) {
 					exec();
 				}
 			}
 		},
 		sqrt: function sqrt(number) {
 			return Math.sqrt(number);
+		},
+		sq: function sq(number) {
+			return Math.pow(number, 2);
+		},
+		pow: function pow(number, n) {
+			return Math.pow(number, n);
 		}
 	};
 

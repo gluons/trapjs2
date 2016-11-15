@@ -10,15 +10,21 @@ const global = {
 	today() {
 		return Date.today();
 	},
-	repeat(numTimes, exec) {
+	repeat(n, exec) {
 		if (typeof exec === 'function') {
-			for (let i = 0; i < numTimes; i++) {
+			for (let i = 0; i < n; i++) {
 				exec();
 			}
 		}
 	},
 	sqrt(number) {
 		return Math.sqrt(number);
+	},
+	sq(number) {
+		return number ** 2;
+	},
+	pow(number, n) {
+		return number ** n;
 	}
 };
 
