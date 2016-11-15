@@ -21,10 +21,10 @@ const global = {
 		return Math.sqrt(number);
 	},
 	sq(number) {
-		return number ** 2;
+		return Math.pow(number, 2);
 	},
 	pow(number, n) {
-		return number ** n;
+		return Math.pow(number, n);
 	}
 };
 

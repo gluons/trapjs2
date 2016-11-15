@@ -69,5 +69,19 @@ describe('Trap', () => {
 				expect(trap.sqrt(-1)).to.be.NaN;
 			});
 		});
+		describe('sq()', () => {
+			it('should return square of N', () => {
+				expect(trap.sq(-1)).to.equal(1);
+				expect(trap.sq(-3)).to.equal(9);
+				expect(trap.sq(5)).to.equal(25);
+			});
+		});
+		describe('pow()', () => {
+			it('should return exponent of N', () => {
+				expect(trap.pow(-1, 4)).to.equal(1);
+				expect(trap.pow(-3, 3)).to.equal(-27);
+				expect(trap.pow(5, 5)).to.equal(3125);
+			});
+		});
 	});
 });
