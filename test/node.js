@@ -21,7 +21,7 @@ describe('Trap', () => {
 		describe('Date.prototype.dateEquals()', () => {
 			it('should return true if two dates are the same date.', () => {
 				let date1 = new Date(2016, 1, 1);
-				let date2 = new Date(2016, 1, 1);
+				let date2 = new Date(2016, 1, 1, 12, 12, 12);
 				expect(date1.dateEquals(date2)).to.be.true;
 			});
 			it('should return false if two dates are different date.', () => {

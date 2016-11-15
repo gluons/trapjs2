@@ -52,6 +52,6 @@ String.prototype.reverse = function () {
 	return result;
 };
 
-String.prototype.contains = function (searchValue) {
-	return !!~this.indexOf(searchValue);
+String.prototype.contains = function (searchString) {
+	return !!~this.indexOf(searchString);
 };

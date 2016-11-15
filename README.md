@@ -20,4 +20,4 @@ bower install trapjs2
 ```
 
 ## API
-Coming soon...
+Go to [API](./docs/API.md)
