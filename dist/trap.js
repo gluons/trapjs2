@@ -178,8 +178,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		return result;
 	};
 
-	String.prototype.contains = function (searchValue) {
-		return !!~this.indexOf(searchValue);
+	String.prototype.contains = function (searchString) {
+		return !!~this.indexOf(searchString);
 	};
 
 /***/ },
@@ -200,10 +200,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		today: function today() {
 			return Date.today();
 		},
-		repeat: function repeat(n, exec) {
-			if (typeof exec === 'function') {
+		repeat: function repeat(n, fn) {
+			if (typeof fn === 'function') {
 				for (var i = 0; i < n; i++) {
-					exec();
+					fn();
 				}
 			}
 		},

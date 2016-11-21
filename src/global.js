@@ -10,10 +10,10 @@ const global = {
 	today() {
 		return Date.today();
 	},
-	repeat(n, exec) {
-		if (typeof exec === 'function') {
+	repeat(n, fn) {
+		if (typeof fn === 'function') {
 			for (let i = 0; i < n; i++) {
-				exec();
+				fn();
 			}
 		}
 	},
