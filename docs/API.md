@@ -1,5 +1,21 @@
 # API
 
+## Table of contents
+- [Native](#native)
+ - [Date.today()](#datetoday)
+ - [Date.prototype.dateEquals(targetDate)](#dateprototypedateequalstargetdate)
+ - [String.prototype.unicodeCharAt(index)](#stringprototypeunicodecharatindex)
+ - [String.prototype.reverse()](#stringprototypereverse)
+ - [String.prototype.contains(searchString)](#stringprototypereverse)
+- [Global](#global)
+ - [log(obj1 [, obj2, ..., objN])](#logobj1--obj2--objn)
+ - [now()](#now)
+ - [today()](#today)
+ - [repeat(n, fn)](#repeatn-fn)
+ - [sqrt(number)](#sqrtnumber)
+ - [sq(number)](#sqnumber)
+ - [pow(number, n)](#pownumber-n)
+
 ## Native
 
 ### Date.today()
